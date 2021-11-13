@@ -1,8 +1,17 @@
-inputFilePath = r'C:\Users\David\Desktop\testcurve.txt'
+import os
+import argparse
 
-outputFilePath = r'C:\Users\David\Desktop\correctedCurve.txt'
+parser = argparse.ArgumentParser()
+parser.add_argument('givenTargetLevel', help='Arbitrary average db level to normalize response to')
+parser.add_argument('givenInputFile', help='Input File')
+parser.add_argument('givenOutputFile', help='Output File')
+args = parser.parse_args()
 
-targetLevel = 67.75
+inputFilePath = os.path.abspath(args.givenInputFile)
+
+outputFilePath = os.path.abspath(args.givenOutputFile)
+
+targetLevel = float(args.givenTargetLevel)
 
 responseDictionary = {}
 
